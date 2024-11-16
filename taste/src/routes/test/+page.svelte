@@ -1,0 +1,1 @@
+<img class="w-full h-screen" src="/mountain.jpg" alt="">
