@@ -5,7 +5,7 @@
   ></div>
   <div class="fixed inset-0 bg-light-blue opacity-55"></div>
   <div
-    class="relative z-10 flex flex-col items-center text-white py-6 justify-center"
+    class="relative z-10 flex flex-col items-center text-white py-10 justify-center"
   >
     <div
       class="relative inset-0 p-3 flex items-center justify-center w-full my-5"
