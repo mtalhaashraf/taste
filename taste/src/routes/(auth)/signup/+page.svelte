@@ -71,7 +71,7 @@
         type="button"
         on:click={() => goto("/signin")}
         class="p-2 w-1/3 xl:p-3 text-white text-xl xl:text-3xl rounded-2xl bg-[#3B3D37]/65 hover:bg-[#3B3D37]/80"
-        >Sign Up</button
+        >Sign In</button
       >
     </div>
   </div>
