@@ -105,6 +105,7 @@
         {/if}
       </div>
     </div>
+
     <!-- email -->
     <div class="flex flex-col w-full gap-2">
       <label for="email" class="text-white font-thin text-2xl xl:text-4xl"
@@ -123,6 +124,7 @@
         <p class="text-red-500">{$errors.email}</p>
       {/if}
     </div>
+
     <!-- password -->
     <div class="flex flex-col w-full gap-2">
       <label for="password" class="text-white font-thin text-2xl xl:text-4xl"
@@ -149,24 +151,25 @@
           Show
         {/if}
       </button>
+      {#if $errors.password}
+        <p class="text-red-500">{$errors.password}</p>
+      {/if}
     </div>
-    {#if $errors.password}
-      <p class="text-red-500">{$errors.password}</p>
-    {/if}
-  </div>
-  <!-- submit buttonL -->
-  <div class="flex flex-row gap-4 w-full justify-center items-center">
-    <button
-      type="submit"
-      class="p-2 w-1/3 xl:p-3 text-white text-xl xl:text-3xl rounded-2xl bg-[#3B3D37]/65 hover:bg-[#3B3D37]/80"
-      >Submit</button
-    >
-    <p class="text-black text-3xl xl:text-5xl">OR</p>
-    <button
-      type="button"
-      on:click={() => goto("/signin")}
-      class="p-2 w-1/3 xl:p-3 text-white text-xl xl:text-3xl rounded-2xl bg-[#3B3D37]/65 hover:bg-[#3B3D37]/80"
-      >Sign In</button
-    >
+
+    <div class="flex flex-row gap-4 w-full justify-center items-center">
+      <!-- submit buttonL -->
+      <button
+        type="submit"
+        class="p-2 w-1/3 xl:p-3 text-white text-xl xl:text-3xl rounded-2xl bg-[#3B3D37]/65 hover:bg-[#3B3D37]/80"
+        >Submit</button
+      >
+      <p class="text-black text-3xl xl:text-5xl">OR</p>
+      <button
+        type="button"
+        on:click={() => goto("/signin")}
+        class="p-2 w-1/3 xl:p-3 text-white text-xl xl:text-3xl rounded-2xl bg-[#3B3D37]/65 hover:bg-[#3B3D37]/80"
+        >Sign In</button
+      >
+    </div>
   </div>
 </form>
