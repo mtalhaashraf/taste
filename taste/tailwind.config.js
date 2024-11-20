@@ -9,7 +9,9 @@ export default {
       },
 
       colors: {
+
         'customGreen': 'rgb(96, 106, 72)',
+
         'light-blue': '#018374',
         'custom-dark-red': '#1F0D07',
         'custom-grey': '#6C7075',
