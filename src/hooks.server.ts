@@ -4,20 +4,16 @@ import {
   PUBLIC_SUPABASE_ANON_KEY,
 } from "$env/static/public";
 import { createServerClient } from "@supabase/ssr";
-import type { Handle } from "@sveltejs/kit";
+import { type Handle, redirect } from "@sveltejs/kit";
+import { sequence } from "@sveltejs/kit/hooks";
 
-export const handle: Handle = async ({ event, resolve }) => {
+const supabase: Handle = async ({ event, resolve }) => {
   event.locals.supabase = createServerClient(
     PUBLIC_SUPABASE_URL,
     PUBLIC_SUPABASE_ANON_KEY,
     {
       cookies: {
         getAll: () => event.cookies.getAll(),
-        /**
-         * SvelteKit's cookies API requires `path` to be explicitly set in
-         * the cookie options. Setting `path` to `/` replicates previous/
-         * standard behavior.
-         */
         setAll: (cookiesToSet) => {
           cookiesToSet.forEach(({ name, value, options }) => {
             event.cookies.set(name, value, { ...options, path: "/" });
@@ -27,11 +23,6 @@ export const handle: Handle = async ({ event, resolve }) => {
     }
   );
 
-  /**
-   * Unlike `supabase.auth.getSession()`, which returns the session _without_
-   * validating the JWT, this function also calls `getUser()` to validate the
-   * JWT before returning the session.
-   */
   event.locals.safeGetSession = async () => {
     const {
       data: { session },
@@ -58,3 +49,32 @@ export const handle: Handle = async ({ event, resolve }) => {
     },
   });
 };
+
+const authGuard: Handle = async ({ event, resolve }) => {
+  // const { session, user } = await event.locals.safeGetSession();
+  // event.locals.session = session;
+  // event.locals.user = user;
+
+  // // Use safe destructuring in the redirect conditions
+  // if (!session && event.url.pathname === "/chat") {
+  //   throw redirect(303, "/signup");
+  // }
+  // if (!session && event.url.pathname === "/store") {
+  //   throw redirect(303, "/signup");
+  // }
+  // if (!session && event.url.pathname === "/subscription") {
+  //   throw redirect(303, "/signup");
+  // }
+
+  // if (session && event.url.pathname === "/signup") {
+  //   throw redirect(303, "/");
+  // }
+
+  // if (session && event.url.pathname === "/signin") {
+  //   throw redirect(303, "/");
+  // }
+
+  return resolve(event);
+};
+
+export const handle: Handle = sequence(supabase, authGuard);
