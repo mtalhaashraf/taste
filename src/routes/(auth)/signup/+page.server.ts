@@ -16,14 +16,13 @@ export const actions: Actions = {
     const { locals } = event;
     const { supabase } = locals;
 
-    console.log('Form data:', form.data); // Check data structure
+    console.log('Form data:', form.data);
     console.log('Form validation result:', form.valid, form.errors);
 
     if (!form.valid) {
       return fail(400, { form });
     }
 
-    // Check if email already exists
     const { data: userData, error: fetchError } = await supabase
       .from('users')
       .select('*')
