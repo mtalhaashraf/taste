@@ -18,7 +18,7 @@
       </div>
   
       <!-- Grid Content -->
-      <div class="grid grid-cols-2 grid-rows-6 2xl:w-1/2 w-full m-8">
+      <div class="grid grid-cols-2 grid-rows-6 2xl w-1/2 m-8">
         <!-- Black Box -->
         <div class="row-span-6 bg-black opacity-70 rounded-3xl font-poiret text-5xl justify-center items-center grid p-8 text-center">
           “What comes closest to your occasion?”
