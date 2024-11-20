@@ -1,4 +1,4 @@
-<div class="relative w-full min-h-screen">
+
     <!-- Background Image (fixed position) -->
     <div class="fixed inset-0 bg-cover bg-center blur-sm" style="background-image: url('../back.jpg');"></div>
   
@@ -55,3 +55,4 @@
     </div>
   </div>
   
+
