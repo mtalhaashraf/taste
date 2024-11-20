@@ -1,5 +1,5 @@
 import type { PageServerLoad, Actions } from './$types';
-import { fail } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import { message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { formSchema } from './schema';
@@ -23,17 +23,18 @@ export const actions: Actions = {
       return fail(400, { form });
     }
 
-    const { data: userData, error: fetchError } = await supabase
-      .from('users')
-      .select('*')
-      .eq('email', form.data.email);
-    if (fetchError) {
-      return fail(400, { form, error: 'Failed to check existing users.' });
-    }
+    // const { data: userData, error: fetchError } = await supabase.auth
+    //   .from('users')
+    //   .select('*')
+    //   .eq('email', form.data.email);
+    // if (fetchError) {
+    //   console.log(error);
+    //   return fail(400, { form, error: 'Failed to check existing users.' });
+    // }
 
-    if (userData.length > 0) {
-      return message(form, 'An account with this email already exists.');
-    }
+    // if (userData.length > 0) {
+    //   return message(form, 'An account with this email already exists.');
+    // }
 
     // Supabase signUp method
     const { data, error: signUpError } = await supabase.auth.signUp({

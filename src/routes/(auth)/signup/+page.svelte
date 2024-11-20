@@ -58,11 +58,11 @@
     </p>
     {#if $message}
       {#if $message?.includes("successfully")}
-        <h3 class="text-green-500 my-2">
+        <h3 class="text-green-500 text-2xl my-2">
           {$message}
         </h3>
       {:else}
-        <h3 class="text-red-500 my-2">{$message}</h3>
+        <h3 class="text-red-500 text-2xl my-2">{$message}</h3>
       {/if}
     {/if}
     <!-- firstname, lastname -->
@@ -86,7 +86,7 @@
           <p class="text-red-500">{$errors.firstname}</p>
         {/if}
       </div>
-      <div class="h-11 w-[0.5px] bg-white hidden md:block"></div>
+      <div class="h-11 w-[0.5px] bg-white hidden xl:block"></div>
       <div class="flex flex-col gap-2 w-full">
         <label for="lastname" class="text-white font-thin text-2xl xl:text-4xl"
           >Last Name</label
